@@ -12,7 +12,6 @@ formSubmitHendler = contact => {
   this.setState(prevState => ({
     contacts: [...prevState.contacts,contact]
   }))
-
 }
 
   render() { 
