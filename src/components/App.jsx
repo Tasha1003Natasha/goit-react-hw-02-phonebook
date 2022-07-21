@@ -1,5 +1,7 @@
 import  {Component } from 'react';
 import {ContactForm} from './ContactForm/ContactForm'
+import {ContactList} from './ContactList/ContactList'
+// import {Filter} from './Filter/Filter'
 // import '../index.css';
 
 export class App extends Component { 
@@ -15,9 +17,12 @@ formSubmitHendler = contact => {
 }
 
   render() { 
+const {contacts} = this.state;
+
     return ( 
       <>
   <ContactForm onSubmit={this.formSubmitHendler}/>
+  <ContactList contactList={contacts}/>
 </>
     )
 }

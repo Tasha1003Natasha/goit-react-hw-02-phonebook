@@ -5,9 +5,10 @@ import styles from '../ContactForm/ContactForm.module.css';
 export class ContactForm extends Component {
   state = {
     name: '',
+    number: '',
   };
 
-  loginInputId = nanoid();
+  //   loginInputId = nanoid();
 
   handleChange = event => {
     const { value, name } = event.target;
@@ -16,24 +17,24 @@ export class ContactForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { name } = this.state;
-    this.props.onSubmit({ ...this.state });
-
+    const { name, number } = this.state;
+    const id = nanoid();
+    this.props.onSubmit({ ...this.state, id });
     this.reset();
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={styles.form}>
           <h1 className="form__title">Phonebook</h1>
-          <label htmlFor={this.loginInputId} className="form__label">
+          <label className="form__label">
             <p>Name</p>
             <input
               type="text"
@@ -47,17 +48,38 @@ export class ContactForm extends Component {
               required
             />
           </label>
+
+          <label className="form__label">
+            <p>Number</p>
+            <input
+              type="tel"
+              name="number"
+              value={number}
+              className={styles.form__input}
+              onChange={this.handleChange}
+              id={this.loginInputId}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+          </label>
         </div>
         <button type="submit" className="form__btn">
           Add contact
         </button>
 
         <h2 className="contact__title">Contacts</h2>
-        <ul className="contact__list">
-          <li className="contact__item">Rosie Simpson: </li>
-          <li className="contact__item">Hermione Kline: </li>
-          <li className="contact__item">Eden Clements: </li>
-        </ul>
+        {/* <ul className="contact__list">
+          <li className="contact__item">
+            {name}:{number}
+          </li>
+          <li className="contact__item">
+            {name}: {number}
+          </li>
+          <li className="contact__item">
+            {name}:{number}
+          </li>
+        </ul> */}
       </form>
     );
   }
