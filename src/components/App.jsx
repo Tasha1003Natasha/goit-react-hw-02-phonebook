@@ -19,19 +19,15 @@ export class App extends Component {
 formSubmitHendler = contact => {
 
 const searchName = this.state.contacts
-.map((contact) => contact.name).includes(contact.name)
+.find((contact) => contact.name).includes(contact.name)
 if (searchName) {
-  return  alert(`${contact.name}  is already in contacts`);
+ alert(`${contact.name}  is already in contacts`);
 } 
   this.setState(prevState => ({
     contacts: [...prevState.contacts,contact]
 
   }))
 }
-
-// else if (contact.name.length === "" ) {
-//   return alert(`Fields must be filled`);
-
 
 formSubmitFilter = ({target: {value}})=> {
   this.setState({
