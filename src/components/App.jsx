@@ -19,13 +19,12 @@ export class App extends Component {
 formSubmitHendler = contact => {
 
 const searchName = this.state.contacts
-searchName.find((contact) => contact.name )
-if (!searchName) {
+.find((item) => item.name  === contact.name)
+if (searchName) {
  alert(`${contact.name}  is already in contacts`);
 } 
   this.setState(prevState => ({
     contacts: [...prevState.contacts,contact]
-
   }))
 }
 
@@ -37,7 +36,7 @@ formSubmitFilter = ({target: {value}})=> {
 
 getSubmitContacts =()=> {
   const {contacts, filter} = this.state;
-  return contacts.filter(({name})=>name.toLowerCase().includes(filter));
+  return contacts.filter(({name})=>name.toLowerCase().includes(filter.toLowerCase()));
 }
 
 
