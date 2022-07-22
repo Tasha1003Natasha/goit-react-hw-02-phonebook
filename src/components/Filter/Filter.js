@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
+import styles from '../Filter/Filter.module.css';
 
 export const Filter = ({ filter, formSubmitFilter }) => {
   return (
-    <label>
-      Find contacts by name
+    <label className={styles.label__input}>
+      <p className={styles.filter__text}>Find contacts by name</p>
       <input
         type="text"
         name="name"
         value={filter}
+        className={styles.filter__input}
         onChange={formSubmitFilter}
       />
     </label>
@@ -16,4 +18,5 @@ export const Filter = ({ filter, formSubmitFilter }) => {
 
 Filter.propTypes = {
   filter: PropTypes.string.isRequired,
+  formSubmitFilter: PropTypes.func.isRequired,
 };
