@@ -22,10 +22,11 @@ const searchName = this.state.contacts
 .find((item) => item.name  === contact.name)
 if (searchName) {
  alert(`${contact.name}  is already in contacts`);
-} 
+}  else {
   this.setState(prevState => ({
     contacts: [...prevState.contacts,contact]
   }))
+  }
 }
 
 formSubmitFilter = ({target: {value}})=> {
