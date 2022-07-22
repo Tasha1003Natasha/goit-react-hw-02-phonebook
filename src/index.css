@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   padding: 20px 0;
-  height: 800px;
+  min-height: 800px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
