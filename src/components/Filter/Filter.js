@@ -1,16 +1,19 @@
+import PropTypes from 'prop-types';
+
 export const Filter = ({ filter, formSubmitFilter }) => {
   return (
-    <form>
-      <label>
-        Find by user name
-        <input
-          type="text"
-          name="name"
-          value={filter}
-          onChange={formSubmitFilter}
-        />
-      </label>
-    </form>
+    <label>
+      Find contacts by name
+      <input
+        type="text"
+        name="name"
+        value={filter}
+        onChange={formSubmitFilter}
+      />
+    </label>
   );
 };
-// Правка
+
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+};

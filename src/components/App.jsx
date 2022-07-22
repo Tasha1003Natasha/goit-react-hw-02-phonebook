@@ -18,25 +18,34 @@ formSubmitHendler = contact => {
 }
 
 formSubmitFilter = ({target: {value}})=> {
-  this.setState(prevState => ({
-    filter:value
-  }))
+  this.setState({
+    filter:value.toLowerCase()
+  })
 }
 
 getSubmitContacts =()=> {
   const {contacts, filter} = this.state;
-  return contacts.filter(({name})=>name.includes(filter))
-
+  return contacts.filter(({name})=>name.toLowerCase().includes(filter));
 }
 
+handleDelete = id => {
+this.setState(prevState=> {
+  return {contacts:prevState.contacts.filter(contact =>contact.id !==id)}
+})
+};
+
+
   render() { 
-const {contacts, filter} = this.state;
+const { filter} = this.state;
 
     return ( 
       <>
+  <h1>Phonebook</h1>
   <ContactForm onSubmit={this.formSubmitHendler}/>
+
+  <h2>Contacts</h2>
   <Filter filter={filter} formSubmitFilter={this.formSubmitFilter}/>
-  <ContactList contactList={contacts}/>
+  <ContactList contactList={this.getSubmitContacts()}  handleDelete={this.handleDelete}/>
 </>
     )
 }
