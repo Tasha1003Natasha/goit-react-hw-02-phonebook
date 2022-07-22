@@ -15,3 +15,4 @@ export const Filter = ({ filter, formSubmitFilter }) => {
     </form>
   );
 };
+// Правка
