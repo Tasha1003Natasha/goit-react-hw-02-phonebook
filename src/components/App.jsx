@@ -19,8 +19,8 @@ export class App extends Component {
 formSubmitHendler = contact => {
 
 const searchName = this.state.contacts
-.find((contact) => contact.name).includes(contact.name)
-if (searchName) {
+searchName.find((contact) => contact.name )
+if (!searchName) {
  alert(`${contact.name}  is already in contacts`);
 } 
   this.setState(prevState => ({
@@ -60,7 +60,7 @@ const { filter} = this.state;
   <Filter filter={filter} formSubmitFilter={this.formSubmitFilter}/>
   <ContactList contactList={this.getSubmitContacts()}  handleDelete={this.handleDelete}/>
 </>
-    )
+  )
 }
 }
 
